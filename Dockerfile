@@ -1,5 +1,5 @@
 FROM python:3.7-slim
-ARG usesource="https://github.com/TechXueXi/TechXueXi.git"
+ARG usesource="https://github.com/wesson-yi/tech_xtxi.git"
 ARG usebranche="developing"
 ENV pullbranche=${usebranche}
 ENV Sourcepath=${usesource}
