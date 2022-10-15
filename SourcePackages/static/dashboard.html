@@ -38,8 +38,7 @@
                                 "<td>" +
                                 '<a target="_blank" href="' +
                                 jump_url +
-                                '">' +
-                                jump_url +
+                                '">'+ "打开学习强国 APP" +
                                 "</a>" +
                                 "</td>" +
                                 "</tr>"
@@ -261,33 +260,30 @@
                         /*边角弧度*/
                         border-radius: 10px;
                         /*阴影*/
-                        -moz-box-shadow:2px 2px 5px #333333; 
-                        -webkit-box-shadow:2px 2px 5px #333333; 
+                        -moz-box-shadow:2px 2px 5px #333333;
+                        -webkit-box-shadow:2px 2px 5px #333333;
                         box-shadow: 7px 15px 30px #285a63;
             }
             body {
-                min-width: 780px;
+                width: auto;
             }
 
             /*表格样式*/
             table {
                 width: 90%;
-                background: #ccc;
                 margin: 10px auto;
-                border-collapse: collapse;
-                /*border-collapse:collapse合并内外边距(去除表格单元格默认的2个像素内外边距*/
+		border-collapse: separate;
+		border-spacing: 0;
             }
 
             th,
             td {
-                height: 25px;
-                line-height: 25px;
                 text-align: center;
                 border: 1px solid #ccc;
             }
 
             th {
-                background: #eee;
+                background: #5a4c3b;
                 font-weight: normal;
             }
 
@@ -315,19 +311,39 @@
                 text-decoration: underline;
                 background-color: orangered;
             }
+	    table tr:first-child th:first-child {
+		    border-top-left-radius: 12px;
+		    border: 1px
+	    }
+	    table tr:first-child th:last-child {
+		    border-top-right-radius: 12px;
+		    border: 1px
+	    }
+	    table tr:last-child td{
+		    border-bottom: 1px solid #ccc;
+	    }
+	    table tr td:first-child{
+		    border-right: 0;
+	    }
+	    table tr td:last-child{
+		    border-right: 1px solid #ccc;
+	    }
+	    table tr td{
+		    border-bottom: 0;
+	    }
+	    table tr:last-child td:first-child {
+		    border-bottom-left-radius: 12px;
+	    }
+	    table tr:last-child td:last-child {
+		    border-bottom-right-radius: 12px;
+	    }
 
-            button {
-                /* 按钮美化 */
-                width: 270px;
-                /* 宽度 */
-                height: 40px;
-                /* 高度 */
-                border-width: 0px;
-                /* 边框宽度 */
+	    button {
+		    width: 10rem;
+		    height: 40px;
+		    border-width: 0px;
                 border-radius: 3px;
-                /* 边框半径 */
-                background: #1e90ff;
-                /* 背景颜色 */
+                background: #9e8c6b;
                 cursor: pointer;
                 /* 鼠标移入按钮范围时出现手势 */
                 outline: none;
@@ -353,31 +369,23 @@
             <div>
                 <table>
                     <caption>
-                        <h2> 👇👇操作台👇👇</h2>    
+                        <h2>操作台</h2>
                     </caption>
-                    <tr>
+		    <tr>
                         <th>使用说明</th>
-                        <th style="width: 300px">功能按钮</th>
+                        <th style="width: 40%">功能按钮</th>
                     </tr>
-                    <tr>
-                        <td>更新代码为最新版本</td>
-                        <td>
-                            <button onclick="update();">更新代码</button>
-                        </td>
-                    </tr>
+
                     <tr>
                         <td>
-                            添加一个用户：
-                            <br />
-                            点击按钮之后，等待几秒
+                            点击按钮，等待几秒
                             <br />
                             下面会自动刷新出二维码和链接
                             <br />
-                            按照提示操作
-                            <br>
-                            手机用户请点击最新的链接，跳转APP登录，电脑点了没有用
                             <br />
-                            电脑用户请打开学习强国软件，扫一扫登录，其他软件扫了没有用
+			    保存二维码，学习强国扫一扫登录
+                            <br>
+                            或者手机浏览器打开，点击链接，跳转APP登录
                         </td>
                         <td>
                             <button onclick="add_user();">添加用户</button>
@@ -385,9 +393,7 @@
                     </tr>
                     <tr>
                         <td>
-                            点击按钮获取缓存的用户状态
-                            <br />
-                            页面会自动获取、刷新
+                            获取缓存的用户状态
                         </td>
                         <td>
                             <button onclick="list_users_status();">
@@ -395,12 +401,10 @@
                             </button>
                         </td>
                     </tr>
-    
+
                     <tr>
                         <td>
-                            点击按钮强制刷新用户状态
-                            <br />
-                            页面会自动获取、刷新
+                            刷新用户状态
                         </td>
                         <td>
                             <button onclick="force_refresh_all_cookies();">
@@ -408,39 +412,21 @@
                             </button>
                         </td>
                     </tr>
-    
+
                    <tr>
                         <td>
-                            点击按钮刷新信息，以获取登录链接，登录状态等
-                            <br />
-                            页面会自动获取、刷新
+                            获取登录链接，登录状态等
                         </td>
                         <td>
                             <button onclick="list_messages();">获取新消息</button>
                         </td>
-                    </tr> 
-                    <tr>
-                        <td>
-                            点击按钮刷新二维码消息
-                            <br />
-                            以获取最新登录二维码，
-                            <br />
-                            不会出现新的二维码
-                            <br />
-                            页面会自动获取、刷新
-                        </td>
-                        <td>
-                            <button onclick="list_qrurls();">获取二维码</button>
-                        </td>
                     </tr>
                     <tr>
                         <td>
-                            点击按钮开始学习所有
-                            <br>
-                            您最好点击您的UID开始学习
+                            获取最新登录二维码
                         </td>
                         <td>
-                            <button onclick="learn_all();">学习全部</button>
+                            <button onclick="list_qrurls();">获取二维码</button>
                         </td>
                     </tr>
                 </table>
@@ -449,24 +435,23 @@
             <div id="tips">
                 <table>
                     <caption >
-                        提示区
-                        <h2> 👇👇提示区👇👇</h2>
+                        <h2>提示区</h2>
                     </caption>
                     <tr>
-                        <th>tips</th>
+                        <th>日志信息</th>
                     </tr>
                     <tr>
                         <td><span id="timestamp">-服务器时间-</span></td>
                     </tr>
                 </table>
             </div>
-            <div id="user-status" style="background-color: #99c58370"  class='main'>
+            <div id="user-status" style=""  class=''>
                 <table>
                     <caption>
-                        <h2> 👇👇点击您的UID开始学习 </h2>
+                        <h2>点击 UID 开始学习</h2>
                     </caption>
                     <tr>
-                        <th style="width: 300px">UID</th>
+                        <th style="width: 40%">UID</th>
                         <th>STATUS</th>
                         <th>取消登录</th>
                     </tr>
@@ -475,11 +460,10 @@
             <div id="message">
                 <table>
                     <caption>
-                        <h2>👇👇👇 消息区域 👇👇👇 </h2>
-                      <h3> 点击添加用户就会出现链接，要在手机浏览器点击才会跳转</h3>
+                        <h2>消息区域</h2>
                     </caption>
                     <tr>
-                        <th style="width: 300px">timestamp</th>
+                        <th style="width: 40%">timestamp</th>
                         <th>message</th>
                     </tr>
                 </table>
@@ -487,12 +471,11 @@
             <div id="qrurl">
                 <table>
                     <caption>
-                       <h2> 👇👇👇二维码区域👇👇👇 </h2> 
-                       <h3>请开学习强国，上面搜索栏右边扫一扫，其他软件扫了没有用</h3>
-                       <h3>扫了之后卡住了多试两次</h3>
+                       <h2> 二维码区域</h2>
+                       <h3>打开学习强国，扫一扫登录</h3>
                     </caption>
                     <tr>
-                        <th style="width: 300px">timestamp</th>
+                        <th style="width: 40%">timestamp</th>
                         <th>qrurl</th>
                     </tr>
                 </table>

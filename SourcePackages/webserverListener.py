@@ -186,7 +186,9 @@ def add():
 
     pdl.add_user()
     sleep(3) and do_refresh_all_cookies(force=True)
-    return web_log_and_resp_ok('ヾ(o◕∀◕)ﾉヾ☆登录成功，手动点击UID开始学习★ヾ(≧O≦)〃嗷~')
+
+    pdl.start_learn(uid, None)
+    return web_log_and_resp_ok('ヾ(o◕∀◕)ﾉヾ☆ 登录成功，手动点击UID开始学习★ヾ(≧O≦)〃嗷~')
 
 
 @app.route('/api/learn')
